@@ -1,19 +1,19 @@
 {
-  "name": "server",
+  "name": "Redux-Friends",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.3",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.2"
-  },
   "scripts": {
     "start": "nodemon server.js"
   },
   "author": "Lambda School",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemod": "^1.5.19"
+  }
 }
