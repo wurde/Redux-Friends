@@ -35,8 +35,9 @@ class LoginForm extends Component {
     event.preventDefault()
     this.props.login(this.state)
       .then(() => {
-        const redirect_route = this.props.location.state.from || '/home'
-        this.props.history.push(redirect_route)
+        console.log("handleOnSubmit.then")
+        // const redirect_route = this.props.location.state.from || '/home'
+        // this.props.history.push(redirect_route)
       })
   }
 
