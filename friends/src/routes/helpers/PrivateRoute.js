@@ -12,6 +12,7 @@ const react_router_dom = require('react-router-dom')
  */
 
 const Component = React.Component
+const Route = react_router_dom.Route
 const Redirect = react_router_dom.Redirect
 
 /**

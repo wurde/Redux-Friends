@@ -5,5 +5,6 @@
  */
 
 module.exports = {
+  LoginFormStyle: require('./LoginFormStyle'),
   LoginLinkStyle: require('./LoginLinkStyle'),
 }

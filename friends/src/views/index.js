@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+  HomeView: require('./HomeView'),
   LandingView: require('./LandingView'),
   LoginView: require('./LoginView'),
 }

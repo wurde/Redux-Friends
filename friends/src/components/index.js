@@ -5,5 +5,6 @@
  */
 
 module.exports = {
+  LoginForm: require('./LoginForm'),
   LoginLink: require('./LoginLink'),
 }
