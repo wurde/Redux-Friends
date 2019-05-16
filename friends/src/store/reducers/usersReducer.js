@@ -31,7 +31,7 @@ function usersReducer(state = initialState, action) {
     case actions.LOGIN_START:
       return Object.assign({}, state, {
         isLoggingIn: true,
-        error: '',
+        error: ''
       })
     case actions.LOGIN_SUCCESS:
       return Object.assign({}, state, {
@@ -46,7 +46,7 @@ function usersReducer(state = initialState, action) {
     case actions.FETCH_FRIENDS_START:
       return Object.assign({}, state, {
         isFetchingFriends: true,
-        error: false
+        error: ''
       })
     case actions.FETCH_FRIENDS_SUCCESS:
       return Object.assign({}, state, {
@@ -57,7 +57,7 @@ function usersReducer(state = initialState, action) {
     case actions.FETCH_FRIENDS_ERROR:
       return Object.assign({}, state, {
         isFetchingFriends: false,
-        error: action.payload,
+        error: action.payload
       })
     default:
       return state

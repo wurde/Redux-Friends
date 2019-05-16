@@ -19,18 +19,19 @@ const Redirect = react_router_dom.Redirect
  * Define route component
  */
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      localStorage.getItem("token") ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/users/login" />
-      )
-    }
-  />
-)
+const PrivateRoute = ({ component: Component, path }) => {
+  return (
+    <Route path={path}
+      render={props => {
+        if (localStorage.getItem("token")) {
+          return <Component {...props} />
+        } else {
+          return <Redirect to="/users/login" />
+        }
+      }}
+    />
+  )
+}
 
 /**
  * Export route component

@@ -23,8 +23,8 @@ const LoginView = views.LoginView
 function UsersRouter({ mount }) {
   return (
     <>
-      <Route path={`${mount}/login`} component={LoginView} />
-      <Route path={`${mount}/signin`} render={() => <Redirect to={`${mount}/login`} />} />
+      <Route exact path={`${mount}/login`} component={LoginView} />
+      <Route exact path={`${mount}/signin`} render={() => <Redirect to={`${mount}/login`} />} />
     </>
   )
 }
