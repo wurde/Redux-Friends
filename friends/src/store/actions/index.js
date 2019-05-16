@@ -13,6 +13,9 @@ const axios = require('axios')
 const LOGIN_START = 'LOGIN_START'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGIN_ERROR = 'LOGIN_ERROR'
+const FETCH_FRIENDS_START = 'FETCH_FRIENDS_START'
+const FETCH_FRIENDS_SUCCESSFUL = 'FETCH_FRIENDS_SUCCESSFUL'
+const FETCH_FRIENDS_FAILED = 'FETCH_FRIENDS_FAILED'
 
 /**
  * Define actions
@@ -32,10 +35,25 @@ const login = creds => dispatch => {
     })
 }
 
+const getCharacters = () => dispatch => {
+  dispatch({ type: FETCH_FRIENDS_START })
+
+  axios.get('/api/friends')
+    .then(res => dispatch({ type: FETCH_FRIENDS_SUCCESSFUL, payload: res.data.results }))
+    .catch(err => dispatch({ type: FETCH_FRIENDS_FAILED, payload: err }))
+}
+
 /**
  * Export actions
  */
 
 module.exports = {
-  login: login
+  LOGIN_START: LOGIN_START,
+  LOGIN_SUCCESS: LOGIN_SUCCESS,
+  LOGIN_ERROR: LOGIN_ERROR,
+  login: login,
+  FETCH_FRIENDS_START: FETCH_FRIENDS_START,
+  FETCH_FRIENDS_SUCCESSFUL: FETCH_FRIENDS_SUCCESSFUL,
+  FETCH_FRIENDS_FAILED: FETCH_FRIENDS_FAILED,
+  getFriends: getFriends,
 }
