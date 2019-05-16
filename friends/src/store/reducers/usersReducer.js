@@ -11,8 +11,13 @@ const actions = require('../actions/index')
  */
 
 const initialState = {
-  isFetching: false,
-  err: ''
+  deletingFriend: false,
+  fetchingFriends: false,
+  friends: [],
+  loggingIn: false,
+  savingFriends: false,
+  updatingFriend: false,
+  error: null
 }
 
 /**

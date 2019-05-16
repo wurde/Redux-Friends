@@ -6,6 +6,8 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const react_redux = require('react-redux')
+const actions = require('../store/actions/index')
 
 /**
  * Constants
@@ -13,6 +15,8 @@ const styles = require('./styles/index')
 
 const Component = React.Component
 const LoginFormStyle = styles.LoginFormStyle
+const connect = react_redux.connect
+const login = actions.login
 
 /**
  * Define component
@@ -29,6 +33,11 @@ class LoginForm extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
+    this.props.login(this.state)
+      .then(() => {
+        const redirect_route = this.props.location.state.from || '/home'
+        this.props.history.push(redirect_route)
+      })
   }
 
   handleOnChange = (event) => {
@@ -49,7 +58,15 @@ class LoginForm extends Component {
 }
 
 /**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+/**
  * Export component
  */
 
-module.exports = LoginForm
+module.exports = connect(mapStateToProps, { login })(LoginForm)
