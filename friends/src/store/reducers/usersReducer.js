@@ -59,6 +59,22 @@ function usersReducer(state = initialState, action) {
         isFetchingFriends: false,
         error: action.payload
       })
+    case actions.DELETE_FRIEND_START:
+      return Object.assign({}, state, {
+        isDeletingFriend: true,
+        error: ''
+      })
+    case actions.DELETE_FRIEND_SUCCESS:
+      return Object.assign({}, state, {
+        isDeletingFriend: false,
+        error: '',
+        friends: action.payload
+      })
+    case actions.DELETE_FRIEND_ERROR:
+      return Object.assign({}, state, {
+        isDeletingFriend: false,
+        error: action.payload
+      })
     default:
       return state
   }

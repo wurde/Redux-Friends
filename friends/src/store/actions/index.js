@@ -17,6 +17,9 @@ const LOGIN_ERROR = 'LOGIN_ERROR'
 const FETCH_FRIENDS_START = 'FETCH_FRIENDS_START'
 const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS'
 const FETCH_FRIENDS_ERROR = 'FETCH_FRIENDS_ERROR'
+const DELETE_FRIEND_START = 'DELETE_FRIEND_START'
+const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS'
+const DELETE_FRIEND_ERROR = 'FETCH_FRIEND_ERROR'
 const axiosWithAuth = helpers.axiosWithAuth
 
 /**
@@ -45,6 +48,19 @@ const getFriends = () => dispatch => {
     .catch(err => dispatch({ type: FETCH_FRIENDS_ERROR, payload: err }))
 }
 
+const deleteFriend = (id) => dispatch => {
+  dispatch({ type: DELETE_FRIEND_START })
+
+  axiosWithAuth().delete(`http://localhost:5000/api/friends/${id}`)
+    .then(res => {
+      localStorage.setItem('token', res.data.token)
+      dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_FRIEND_ERROR, payload: err.response.message })
+    })
+}
+
 /**
  * Export actions
  */
@@ -58,4 +74,8 @@ module.exports = {
   FETCH_FRIENDS_SUCCESS,
   FETCH_FRIENDS_ERROR,
   getFriends: getFriends,
+  DELETE_FRIEND_START,
+  DELETE_FRIEND_SUCCESS,
+  DELETE_FRIEND_ERROR,
+  deleteFriend: deleteFriend
 }

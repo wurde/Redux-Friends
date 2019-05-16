@@ -117,7 +117,7 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
   }
 });
 
-app.delete('/api/friends/:id', authenticator, (req, res) => {
+app.delete('/api/friends/:id', /*authenticator,*/ (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));

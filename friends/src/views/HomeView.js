@@ -15,6 +15,7 @@ const actions = require('../store/actions/index')
 const Component = React.Component
 const connect = react_redux.connect
 const getFriends = actions.getFriends
+const deleteFriend = actions.deleteFriend
 
 /**
  * Define view component
@@ -33,6 +34,10 @@ class HomeView extends Component {
     this.props.getFriends()
   }
 
+  handleDeleteFriend = (id) => {
+    this.props.deleteFriend(id)
+  }
+
   render() {
     return (
       <main>
@@ -44,7 +49,7 @@ class HomeView extends Component {
               <ul>
                 {this.props.friends &&
                  this.props.friends.map(friend => (
-                   <li key={friend.id}>{friend.name}</li>
+                   <li key={friend.id}>{friend.name} <span onClick={() => this.handleDeleteFriend(friend.id)} style={{ cursor: 'pointer', color: '#AAA'}}>x</span></li>
                  ))}
               </ul>
             </div>
@@ -69,4 +74,4 @@ const mapStateToProps = (state) => {
  * Export view component
  */
 
-module.exports = connect(mapStateToProps, { getFriends })(HomeView)
+module.exports = connect(mapStateToProps, { getFriends, deleteFriend })(HomeView)
