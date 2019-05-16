@@ -41,7 +41,7 @@ const getFriends = () => dispatch => {
   dispatch({ type: FETCH_FRIENDS_START })
 
   axiosWithAuth().get('http://localhost:5000/api/friends')
-    .then(res => dispatch({ type: FETCH_FRIENDS_SUCCESS, payload: res.data.results }))
+    .then(res => dispatch({ type: FETCH_FRIENDS_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_FRIENDS_ERROR, payload: err }))
 }
 
